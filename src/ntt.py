@@ -1,6 +1,15 @@
 
 import numpy as np 
 
+'''
+Computes the cyclic form of the NTT. 
+    a: nparray, shape (n,)
+        numpy array of length N, with entries in the finite field Z_q for q prime
+    w: int 
+        Positive integer corresponding to Nth root of unity over Z_q, i.e w^N ~ 1 mod q 
+    q: int 
+        Positive prime integer denoting the order of the finite field, Z_q 
+'''
 def ntt(a : np.array, w : int, q : int, barret_reduction = False) -> np.array:  
     
     N     = len(a) 
@@ -13,6 +22,15 @@ def ntt(a : np.array, w : int, q : int, barret_reduction = False) -> np.array:
     
     return a_hat 
 
+'''
+Computes the cyclic form of the inverse NTT. 
+    a_hat: nparray, shape (n,)
+        numpy array of length N, with entries in the finite field Z_q for q prime
+    w: int 
+        Positive integer corresponding to Nth root of unity over Z_q, i.e w^N ~ 1 mod q 
+    q: int 
+        Positive prime integer denoting the order of the finite field, Z_q 
+'''
 def intt(a_hat : np.array, w : int, q : int, barret_reduction = False) -> np.array:  
     
     N     = len(a_hat)
@@ -41,3 +59,14 @@ def slow_ntt(a : list, w : int, q : int, barret_reduction = False) -> list:
         a_hat[k] = sum 
 
     return a_hat 
+
+# TO DO: 
+def ntt_n():
+    return
+
+def intt_n(): 
+    return 
+
+# For validation purposes only 
+def slow_ntt_n():
+    return  

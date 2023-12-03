@@ -46,8 +46,8 @@ def z_11_n_5_ntt_test():
         color  = b.FAIL 
 
     print(color + "Test Result: " + result + b.ENDC)
-    print(f"Execution Time, slow_ntt [ms]: {1000*(t1 - t0)}")
-    print(f"Execution Time, ntt      [ms]: {1000*(t3 - t2)}")
+    print(f"Execution Time, slow_ntt [s]: {(t1 - t0)}")
+    print(f"Execution Time, ntt      [s]: {(t3 - t2)}")
 
     if(result == "FAIL"):
         return 
@@ -69,7 +69,7 @@ def z_11_n_5_ntt_test():
         color  = b.FAIL 
 
     print(color + "Test Result: " + result + b.ENDC)
-    print(f"Execution Time, intt     [ms]: {1000*(t1 - t0)}")
+    print(f"Execution Time, intt     [s]: {(t1 - t0)}")
     return 
 
 if __name__ == "__main__": 

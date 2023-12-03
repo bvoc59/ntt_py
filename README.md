@@ -1,6 +1,6 @@
 # NTT PY
 
-Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). 
+Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). NTT PY supports both the cyclic and negacyclic form of the transform as well as Barret Reductions (see below). 
 
 # NTT Background   
 ## Cyclic Form 
@@ -41,3 +41,6 @@ for $`0 \leq k < N`$: such is the negacyclic form of the transform. Identifying 
 ```math
 \mathbb{Z}_q[x] / \langle x^N + 1 \rangle \cong \prod_{k=0}^{N-1} \mathbb{Z}_q[x] / \langle x - \psi^{2k + 1} \rangle 
 ```
+
+## Barret Reductions 
+Note that the above equations make extensive use of arithmetic modulo q. 

@@ -89,13 +89,3 @@ def slow_intt(a_hat : list, w : int, q : int, barret_reduction = False) -> list:
 
     return a 
 
-# TO DO: 
-def ntt_n():
-    return
-
-def intt_n(): 
-    return 
-
-# For validation purposes only 
-def slow_ntt_n():
-    return  

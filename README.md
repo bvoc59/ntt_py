@@ -1,6 +1,7 @@
 # NTT PY
 
-Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). NTT PY supports both the cyclic and negacyclic form of the transform as well as Barret Reductions (see below). 
+Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). NTT PY currently only supports the cyclic form of the transform, 
+though will soon include the negacyclic as well. Additionally, it will also include optional Barret Reductions. 
 
 # NTT Background   
 ## Cyclic Form 

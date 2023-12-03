@@ -5,7 +5,7 @@ Python Implementation of the Number Theoretic Transform (NTT), developed with [n
 # NTT Background   
 ## Cyclic Form 
 
-Given the finite field $`\mathbb{Z}_q`$ , for $`q > 0`$ prime, and an $N$ th root of unity over $`\mathbb{Z}_q$, $\omega \in \mathbb{Z}_q`$, the NTT is the map 
+Given the finite field $`\mathbb{Z}_q`$ , for $`q > 1`$ prime, and a primitive $N$ th root of unity over $`\mathbb{Z}_q$, $\omega \in \mathbb{Z}_q`$, the NTT is the map 
 $`\textbf{NTT}: \mathbb{Z}_q^N \rightarrow \mathbb{Z}_q^N `$ which sends $`(a_0, a_1, ... , a_{N-1})`$ to $`(\hat{a}_0, \hat{a}_1, ... , \hat{a}_{N-1})`$ using the rule:   
 
 ```math 
@@ -43,4 +43,4 @@ for $`0 \leq k < N`$: such is the negacyclic form of the transform. Identifying 
 ```
 
 ## Barret Reductions 
-Note that the above equations make extensive use of arithmetic modulo q. 
+Note that the above equations make extensive use of arithmetic modulo q. Our implementation therefore allows one to use the Barret Reduction algorithm to perform modular reductions (See below). 

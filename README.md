@@ -17,10 +17,14 @@ for $`0 \leq k < N`$. Indeed, the vector $`(a_0, a_1, ... , a_{N-1})`$ is identi
 \mathbb{Z}_q[x] / \langle x^N - 1 \rangle \cong \prod_{k=0}^{N-1} \mathbb{Z}_q[x] / \langle x - \omega^k \rangle 
 ```
 
-which is an expression of the Chinese Remainder Theorem. Note that in the product ring, multiplication is point-wise. Thus, one can easily perform multiplication in $`\mathbb{Z}_q`$, modulo $`x^N - 1`$, as follows:  
+which is an expression of the Chinese Remainder Theorem. Note that in the product ring, multiplication is point-wise. Thus, one can easily perform multiplication in $`\mathbb{Z}_q[X]`$, modulo $`x^N - 1`$, as follows:  
 
 ```math
 \textbf{NTT}^{-1}\{ \textbf{NTT}\{a\} \cdot \textbf{NTT}\{b\}\}
 ```
 
-where $`\cdot`$ is meant to denote the dot product and $`\textbf{NTT}^{-1}`$ is the inverse NTT. 
+where $`\cdot`$ is meant to denote the dot product and $`\textbf{NTT}^{-1}`$ is the inverse NTT, defined by: 
+
+```math 
+a_n = N^{-1} \sum_{k=0}^{N-1} \hat{a}_k \omega^{-nk} \mod{q} $$
+```

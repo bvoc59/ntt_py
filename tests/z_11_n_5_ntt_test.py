@@ -37,12 +37,15 @@ def z_11_n_5_ntt_test():
     print(a_hat) 
 
     result = ""
-    if(np.array(a_hat_slow).all() == np.array(a_hat).all()):
+    color  = None 
+    if((np.array(a_hat_slow) == np.array(a_hat)).all()):
         result = "PASS"
+        color  = b.PASS 
     else:  
         result = "FAIL"
+        color  = b.FAIL 
 
-    print(b.OK + "Test Result: " + result + b.ENDC)
+    print(color + "Test Result: " + result + b.ENDC)
     print(f"Execution Time, slow_ntt [ms]: {1000*(t1 - t0)}")
     print(f"Execution Time, ntt      [ms]: {1000*(t3 - t2)}")
 
@@ -58,12 +61,14 @@ def z_11_n_5_ntt_test():
     print("Out Sequence: intt")
     print(a_inv) 
 
-    if(np.array(a).all() == np.array(a_inv).all()):
+    if((np.array(a_inv) == np.array(a)).all()):
         result = "PASS"
+        color  = b.PASS 
     else: 
         result = "FAIL"
+        color  = b.FAIL 
 
-    print(b.OK + "Test Result: " + result + b.ENDC)
+    print(color + "Test Result: " + result + b.ENDC)
     print(f"Execution Time, intt     [ms]: {1000*(t1 - t0)}")
     return 
 

@@ -1,5 +1,7 @@
 
-import numpy as np 
+import numpy as np
+
+from util.exp import reduce_exponents, exponentiate_vec_mod
 
 '''
 Computes the cyclic form of the NTT. 
@@ -17,8 +19,12 @@ def ntt(a : np.array, w : int, q : int, barret_reduction = False) -> np.array:
     a_hat = np.zeros(N)
     
     for k in range(N):   
-        w_vec     = np.mod(np.power(w*np.ones(N), k*n_vec), q*np.ones(N)) 
-        a_hat[k]  = np.sum(np.multiply(w_vec, a)) % q  
+
+        exp_vec  = reduce_exponents(k*n_vec, N)
+        w_vec    = w*np.ones(N)
+        w_vec    = exponentiate_vec_mod(list(w_vec), list(exp_vec), q)    
+
+        a_hat[k] = np.sum(np.multiply(np.array(w_vec), a)) % q  
     
     return a_hat 
 
@@ -39,9 +45,15 @@ def intt(a_hat : np.array, w : int, q : int, barret_reduction = False) -> np.arr
     a     = np.zeros(N)
     
     for k in range(N):   
-        w_vec     = np.mod(np.power(w*np.ones(N), k*n_vec), q*np.ones(N)) 
-        w_vec_inv = np.mod(np.power(w_vec, (q-2)*np.ones(N)), q*np.ones(N))
-        a[k]      = N_inv * np.sum(np.multiply(w_vec_inv, a_hat)) % q  
+
+        exp_vec     = reduce_exponents(k*n_vec, N) 
+        w_vec       = w*np.ones(N)
+        w_vec       = exponentiate_vec_mod(list(w_vec), list(exp_vec), q)    
+
+        inv_exp_vec = reduce_exponents((q-2)*np.ones(N), N) 
+        w_vec_inv   = exponentiate_vec_mod(list(w_vec), list(inv_exp_vec), q)
+        
+        a[k]        = N_inv * np.sum(np.multiply(np.array(w_vec_inv), a_hat)) % q  
     
     return a 
 

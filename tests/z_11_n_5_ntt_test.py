@@ -4,7 +4,18 @@ import time
 import bcolors as b 
 import numpy as np 
 
-from src.ntt import ntt, intt, slow_ntt 
+from src.ntt   import ntt, intt, slow_ntt 
+from util.poly import gen_rand_poly 
+
+'''
+Simple NTT validation test over the finite field of order 11, Z_11, with 3 our N = 5th 
+root of unity, since 3^5 ~ 1 mod 11.  
+
+Tests ntt from src.ntt, with slow_ntt from src.ntt as validation. 
+Then tests intt from src.ntt, applies to transformed sequence 
+and tests if equals original sequence. 
+
+'''
 
 def z_11_n_5_ntt_test(): 
 
@@ -17,7 +28,7 @@ def z_11_n_5_ntt_test():
     print(f"w: {w}")
     print(f"N: {N}")
 
-    a  = [6, 0, 10, 7, 2] 
+    a  = gen_rand_poly(N, q) 
 
     print("In Sequence:")
     print(a) 
@@ -46,8 +57,8 @@ def z_11_n_5_ntt_test():
         color  = b.FAIL 
 
     print(color + "Test Result: " + result + b.ENDC)
-    print(f"Execution Time, slow_ntt [s]: {(t1 - t0)}")
-    print(f"Execution Time, ntt      [s]: {(t3 - t2)}")
+    print(f"Execution Time, slow_ntt [ms]: {1000*(t1 - t0)}")
+    print(f"Execution Time, ntt      [ms]: {1000*(t3 - t2)}")
 
     if(result == "FAIL"):
         return 
@@ -69,7 +80,7 @@ def z_11_n_5_ntt_test():
         color  = b.FAIL 
 
     print(color + "Test Result: " + result + b.ENDC)
-    print(f"Execution Time, intt     [s]: {(t1 - t0)}")
+    print(f"Execution Time, intt     [ms]: {1000*(t1 - t0)}")
     return 
 
 if __name__ == "__main__": 

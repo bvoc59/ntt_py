@@ -9,7 +9,7 @@ Reduce the elements of an exponent vector modulo N.
         Positive prime integer corresponding to factor to 
         reduce by. 
 '''
-def reduce_exponents(exp_vec : np.array, N : int) -> np.array:
+def reduce_exponents(exp_vec : np.ndarray, N : int) -> np.ndarray:
     i = 0 
     for exp in exp_vec: 
         if(exp == N):

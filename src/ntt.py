@@ -12,7 +12,7 @@ Computes the cyclic form of the NTT.
     q: int 
         Positive prime integer denoting the order of the finite field, Z_q 
 '''
-def ntt(a : np.array, w : int, q : int, barret_reduction = False) -> np.array:  
+def ntt(a : np.ndarray, w : int, q : int, barret_reduction = False) -> np.ndarray:  
     
     N     = len(a) 
     n_vec = np.linspace(0, N-1, N) 
@@ -37,7 +37,7 @@ Computes the cyclic form of the inverse NTT.
     q: int 
         Positive prime integer denoting the order of the finite field, Z_q 
 '''
-def intt(a_hat : np.array, w : int, q : int, barret_reduction = False) -> np.array:  
+def intt(a_hat : np.ndarray, w : int, q : int, barret_reduction = False) -> np.ndarray:  
     
     N     = len(a_hat)
     N_inv = (N**(q - 2)) % q 

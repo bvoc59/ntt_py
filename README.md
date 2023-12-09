@@ -35,13 +35,20 @@ a_n = N^{-1} \sum_{k=0}^{N-1} \hat{a}_k \omega^{-nk} \mod{q} $$
 Here, we require some $`\psi \in \mathbb{Z}_q`$ such that $`\psi^2 = \omega`$. That is, $`\psi`$ is a $`2N`$ th root of unity over $`\mathbb{Z}_q`$. We hence send $`(a_0, a_1, ... , a_{N-1})`$ to $`(\hat{a}_0, \hat{a}_1, ... , \hat{a}_{N-1})`$ using the rule: 
 
 ```math 
-\hat{a}_k := \sum_{n=0}^{N-1} a_n \psi^{(2k + 1)n} \mod{q} $$
+\hat{a}_k := \sum_{n=0}^{N-1} a_n \psi^{(2k + 1)n} \mod{q} 
 ```
 for $`0 \leq k < N`$: such is the negacyclic form of the transform. Identifying vectors with polynomials in $`\mathbb{Z}_q[x] / \langle x^N + 1 \rangle `$, the NTT in negacyclic form computes the ring isomorphism: 
 
 ```math
 \mathbb{Z}_q[x] / \langle x^N + 1 \rangle \cong \prod_{k=0}^{N-1} \mathbb{Z}_q[x] / \langle x - \psi^{2k + 1} \rangle 
 ```
+
+Note that here, the inverse transform is: 
+
+```math 
+a_n = N^{-1} \sum_{k=0}^{N-1} \hat{a}_k \psi^{-(2k + 1)n} \mod{q}
+```
+
 
 ## Barret Reductions 
 Note that the above equations make extensive use of arithmetic modulo q. Our implementation therefore allows one to use the Barret Reduction algorithm to perform modular reductions (See below). 

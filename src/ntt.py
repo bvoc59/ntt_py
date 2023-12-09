@@ -4,7 +4,7 @@ import numpy as np
 from util.exp import reduce_exponents, exponentiate_vec_mod
 
 '''
-Computes the cyclic form of the NTT. 
+Computes the cyclic form of the NTT.  
     a: ndarray, shape (n,)
         numpy array of length N, with entries in the finite field Z_q for q prime
     w: int 

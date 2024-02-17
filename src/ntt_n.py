@@ -20,7 +20,7 @@ def ntt_n(a : np.ndarray, psi : int, q : int, barret_reduction = False) -> np.nd
 
     for k in range(N): 
 
-        exp_vec  = reduce_exponents((2*k + 1)*n_vec, N)
+        exp_vec  = reduce_exponents((2*k + 1)*n_vec, 2*N)
         psi_vec  = psi*np.ones(N)
         psi_vec  = exponentiate_vec_mod(list(psi_vec), list(exp_vec), q) 
 
@@ -47,12 +47,13 @@ def intt_n(a_hat : np.ndarray, psi : int, q : int, barret_reduction = False) -> 
 
     for n in range(N):
 
-        exp_vec = reduce_exponents((2*n + 1)*k_vec, N)
-        exp_vec = exponentiate_vec_mod(list(exp_vec), list((q-2)*np.ones(N)), q)
-        psi_vec = psi*np.ones(N)
-        psi_vec = exponentiate_vec_mod(list(psi_vec), list(exp_vec), q)
+        exp_vec     = reduce_exponents((2*n + 1)*k_vec, 2*N)
+        exp_vec_inv = exponentiate_vec_mod(list(exp_vec), list((q - 2)*np.ones(N)), q)
+        
+        psi_vec     = psi*np.ones(N)
+        psi_vec     = exponentiate_vec_mod(list(psi_vec), list(exp_vec_inv), q)
 
-        a[n]    = (N_inv * np.sum(np.multiply(np.array(psi_vec), a))) % q   
+        a[n]        = (N_inv * np.sum(np.multiply(np.array(psi_vec), a_hat))) % q   
 
     return a 
 

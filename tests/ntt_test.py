@@ -17,7 +17,7 @@ Simple NTT test framework.
     N: int 
         Positive integer such that w^N ~ 1 mod q. 
 
-Our test framework consists of the following three tests. 
+The test framework consists of the following three tests. 
 
 Test #1: 
 Generate a random input polynomial with coefficients valued in Z_q. 

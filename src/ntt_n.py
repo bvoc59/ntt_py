@@ -56,7 +56,7 @@ def intt_n(a_hat : np.ndarray, psi : int, q : int, barret_reduction = False) -> 
 
     return a 
 
-# For validation purposes only 
+# For validation purposes: sufficient for small N
 def slow_ntt_n(a : list, psi : int, q : int, barret_reduction = False) -> list:
 
     N     = len(a)
@@ -71,7 +71,7 @@ def slow_ntt_n(a : list, psi : int, q : int, barret_reduction = False) -> list:
 
     return a_hat
 
-# For validation purposes only 
+# For validation purposes: sufficient for small N 
 def slow_intt_n(a_hat : list, psi : int, q : int, barret_reduction = False) -> list:
     
     N     = len(a_hat)

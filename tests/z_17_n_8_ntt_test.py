@@ -2,6 +2,9 @@ import sys
 
 from tests.ntt_test import ntt_test
 
+'''
+usage: python -m tests.z_17_n_8_ntt_test
+'''
 def z_17_n_8_ntt_test(): 
 
     q  = 17
@@ -17,4 +20,4 @@ if __name__ == "__main__":
     z_17_n_8_ntt_test()   
     
     print("Exiting NTT test...")
-    sys.exit() 
+    sys.exit(0) 

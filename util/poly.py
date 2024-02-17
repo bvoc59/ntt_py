@@ -12,6 +12,6 @@ field Z_q.
 def gen_rand_poly(N : int, q : int) -> list:  
     poly = [0]*N 
     for n in range(N):
-        poly[n] = int(rand.uniform(0, q-1))  
+        poly[n] = int(rand.uniform(0, q - 1))  
     return poly 
 

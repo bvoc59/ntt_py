@@ -3,13 +3,13 @@ import sys
 from tests.ntt_test import ntt_test
 
 '''
-usage: python -m tests.z_97_n_16_ntt_test
+usage: python -m tests.z_137_n_34_ntt_test
 '''
-def z_97_n_16_ntt_test(): 
+def z_137_n_34_ntt_test(): 
 
-    q  = 97
-    w  = 18  
-    N  = 16
+    q  = 137
+    w  = 4 
+    N  = 34 
     
     ntt_test(q, w, N)
     return 
@@ -17,7 +17,7 @@ def z_97_n_16_ntt_test():
 if __name__ == "__main__": 
 
     print("Launching NTT test...")
-    z_97_n_16_ntt_test()   
+    z_137_n_34_ntt_test()   
     
     print("Exiting NTT test...")
     sys.exit(0) 

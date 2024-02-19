@@ -37,3 +37,4 @@ def exponentiate_vec_mod(in_vec : list, exp_vec : list, q : int) -> list:
         out_vec[i] = int(in_vec[i]) ** int(exp_vec[i]) 
         out_vec[i] = out_vec[i] % q
     return out_vec
+

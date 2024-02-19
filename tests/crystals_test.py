@@ -19,9 +19,9 @@ def crystals_test():
     N   = 256
 
     print("NTT Parameters:") 
-    print(f"q: {q}") 
-    print(f"w: {psi}")
-    print(f"N: {N}")
+    print(f"q:   {q}") 
+    print(f"psi: {psi}")
+    print(f"N:   {N}")
 
     a = gen_rand_poly(N, q) 
 
@@ -41,7 +41,7 @@ def crystals_test():
     a_inv = intt_n(a_hat, psi, q) 
     t1 = time.perf_counter()  
 
-    print(f"Execution Time, intt_n [ms]: {t1 - t0}")
+    print(f"Execution Time, intt_n [s]: {t1 - t0}")
     
     print("====================")
     print("Executing Test #3...")
@@ -52,7 +52,7 @@ def crystals_test():
         result = "FAIL"
         color  = b.FAIL     
 
-    print(color + "Test #2 Result: " + result + b.ENDC)
+    print(color + "Test #3 Result: " + result + b.ENDC)
     return 
 
 if __name__ == "__main__":

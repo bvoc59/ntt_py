@@ -15,3 +15,4 @@ def gen_rand_poly(N : int, q : int) -> list:
         poly[n] = int(rand.uniform(0, q - 1))  
     return poly 
 
+

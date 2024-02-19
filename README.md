@@ -26,7 +26,7 @@ and `intt` for the backwards transform:
 ```
 
 ## Negacyclic Transform
-Use `ntt_n` for the forward transform and `intt` for the backward transform. 
+Use `ntt_n` for the forward transform and `intt_n` for the backward transform. 
 
 # NTT Background   
 ## Cyclic Form 

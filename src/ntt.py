@@ -2,6 +2,7 @@
 import numpy as np
 
 from util.exp import reduce_exponents, exponentiate_vec_mod
+from util.mod import invert_vec_mod, sum_vec_mod 
 
 '''
 Computes the cyclic form of the NTT.  
@@ -22,9 +23,10 @@ def ntt(a : np.ndarray, w : int, q : int, barret_reduction = False) -> np.ndarra
 
         exp_vec  = reduce_exponents(k*n_vec, N)
         w_vec    = w*np.ones(N)
-        w_vec    = exponentiate_vec_mod(list(w_vec), list(exp_vec), q)    
+        w_vec    = exponentiate_vec_mod(list(w_vec), list(exp_vec), q)   
 
-        a_hat[k] = np.sum(np.multiply(np.array(w_vec), a)) % q  
+        prod_vec = [(a[n] * w_vec[n]) % q for n in range(N)] 
+        a_hat[k] = sum_vec_mod(prod_vec, q) % q 
     
     return a_hat 
 
@@ -40,7 +42,8 @@ Computes the cyclic form of the inverse NTT.
 def intt(a_hat : np.ndarray, w : int, q : int, barret_reduction = False) -> np.ndarray:  
     
     N     = len(a_hat)
-    N_inv = (N**(q - 2)) % q 
+    N_inv = (N**(q - 2)) % q
+
     k_vec = np.linspace(0, N-1, N) 
     a     = np.zeros(N)
     
@@ -50,12 +53,11 @@ def intt(a_hat : np.ndarray, w : int, q : int, barret_reduction = False) -> np.n
         w_vec       = w*np.ones(N)
         w_vec       = exponentiate_vec_mod(list(w_vec), list(exp_vec), q)    
 
-        inv_exp_vec = reduce_exponents((q-2)*np.ones(N), N) 
-        w_vec_inv   = exponentiate_vec_mod(list(w_vec), list(inv_exp_vec), q)
-        
-        a[n]        = N_inv * np.sum(np.multiply(np.array(w_vec_inv), a_hat)) % q  
-    
-    return a 
+        w_vec_inv = invert_vec_mod(w_vec, q)  
+        prod_vec  = [ (a_hat[k] * w_vec_inv[k]) % q for k in range(N) ]  
+        a[n]      = N_inv * sum_vec_mod(prod_vec, q) % q 
+
+    return a
 
 # For For validation purposes: sufficient for small N
 def slow_ntt(a : list, w : int, q : int, barret_reduction = False) -> list: 

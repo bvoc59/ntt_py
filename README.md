@@ -1,7 +1,32 @@
 # NTT PY
 
-Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). NTT PY currently only supports the cyclic form of the transform, 
-though will soon include the negacyclic as well. Additionally, it will also include optional Barret Reductions. 
+Python Implementation of the Number Theoretic Transform (NTT), developed with [numpy](https://numpy.org/). NTT PY supports both the cyclic form and negacylic form of the transform. 
+
+# Usage: 
+Ensure all prerequisies are satisfied (`pip install -r requirements.txt`). 
+
+## Cyclic Transform 
+Use `ntt` for the forward transform: 
+
+```python
+>>> import numpy as np
+>>> from src.ntt import ntt, intt
+>>> q = 11; w = 3;
+>>> a_hat = ntt(np.array([7, 8, 3, 4, 10]), w, q)
+>>> print(a_hat)
+[10.  8. 10.  8. 10.]
+```
+
+and `intt` for the backwards transform: 
+
+```python
+>>> a = intt(a_hat, w, q)
+>>> print(a)
+[ 7.  8.  3.  4. 10.]
+```
+
+## Negacyclic Transform
+Use `ntt_n` for the forward transform and `intt` for the backward transform. 
 
 # NTT Background   
 ## Cyclic Form 

@@ -74,5 +74,3 @@ Note that here, the inverse transform is:
 a_n = N^{-1} \sum_{k=0}^{N-1} \hat{a}_k \psi^{-(2k + 1)n} \mod{q}
 ```
 
-## Barret Reductions 
-Note that the above equations make extensive use of arithmetic modulo q. Our implementation therefore allows one to use the Barret Reduction algorithm to perform modular reductions (See below). 

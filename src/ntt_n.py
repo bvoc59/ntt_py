@@ -40,10 +40,10 @@ Computes the cyclic form of the inverse NTT.
 def intt_n(a_hat : np.ndarray, psi : int, q : int, barret_reduction = False) -> np.ndarray:
 
     N     = len(a_hat)
-    N_inv = (N**(q - 2)) % q
+    N_inv = N**(q - 2) % q
     
     k_vec = np.linspace(0, N-1, N) 
-    a     = np.zeros(N) 
+    a     = np.zeros(N)
 
     for n in range(N):
 

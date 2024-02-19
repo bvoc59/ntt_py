@@ -116,6 +116,6 @@ def ntt_test(q, w, N):
         result = "FAIL"
         color  = b.FAIL     
 
-    print(color + "Test #2 Result: " + result + b.ENDC)
+    print(color + "Test #3 Result: " + result + b.ENDC)
     return 
 
